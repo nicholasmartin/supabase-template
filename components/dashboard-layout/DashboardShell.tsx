@@ -5,11 +5,17 @@ import AppSidebar from "@/components/dashboard-layout/AppSidebar";
 import Backdrop from "@/components/dashboard-layout/Backdrop";
 import DashboardContent from "@/components/dashboard-layout/DashboardContent";
 import { ThemeProvider } from "@/context/ThemeContext";
+import { User } from "@supabase/supabase-js";
+import { Profile } from "@/utils/supabase/profiles";
 
 export default function DashboardShell({
   children,
+  user,
+  profile,
 }: {
   children: React.ReactNode;
+  user: User;
+  profile: Profile | null;
 }) {
   return (
     <ThemeProvider>
@@ -19,7 +25,7 @@ export default function DashboardShell({
         <Backdrop />
         
         {/* Main Content Area */}
-        <DashboardContent>{children}</DashboardContent>
+        <DashboardContent user={user} profile={profile}>{children}</DashboardContent>
       </div>
     </ThemeProvider>
   );

@@ -1,4 +1,5 @@
 import { createClient } from "@/utils/supabase/server";
+import { getUserProfile } from "@/utils/supabase/profiles";
 import { redirect } from "next/navigation";
 import React from "react";
 import DashboardShell from "@/components/dashboard-layout/DashboardShell";
@@ -15,8 +16,11 @@ export default async function DashboardLayout({
   } = await supabase.auth.getUser();
 
   if (!user) {
-    return redirect("/sign-in");
+    return redirect("/signin");
   }
 
-  return <DashboardShell>{children}</DashboardShell>;
+  // Fetch user profile
+  const profile = await getUserProfile(user);
+
+  return <DashboardShell user={user} profile={profile}>{children}</DashboardShell>;
 }

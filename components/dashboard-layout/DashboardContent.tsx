@@ -3,8 +3,18 @@
 import { useSidebar } from "@/context/SidebarContext";
 import AppHeader from "@/components/dashboard-layout/AppHeader";
 import React from "react";
+import { User } from "@supabase/supabase-js";
+import { Profile } from "@/utils/supabase/profiles";
 
-export default function DashboardContent({ children }: { children: React.ReactNode }) {
+export default function DashboardContent({ 
+  children, 
+  user,
+  profile
+}: { 
+  children: React.ReactNode;
+  user: User;
+  profile: Profile | null;
+}) {
   const { isExpanded, isHovered, isMobileOpen } = useSidebar();
 
   // Dynamic class for main content margin based on sidebar state
@@ -19,7 +29,7 @@ export default function DashboardContent({ children }: { children: React.ReactNo
       className={`flex-1 transition-all duration-300 ease-in-out ${mainContentMargin}`}
     >
       {/* Header */}
-      <AppHeader />
+      <AppHeader user={user} profile={profile} />
       {/* Page Content */}
       <div className="p-4 mx-auto max-w-[1400px] md:p-6">{children}</div>
     </div>

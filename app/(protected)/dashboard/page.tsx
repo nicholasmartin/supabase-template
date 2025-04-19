@@ -9,16 +9,16 @@ export default async function DashboardPage() {
   } = await supabase.auth.getUser();
 
   if (!user) {
-    return redirect("/sign-in");
+    return redirect("/signin");
   }
 
   return (
-    <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 xl:grid-cols-4 2xl:gap-7.5">
+    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-6 xl:grid-cols-4 2xl:gap-7.5">
       {/* Dashboard Cards */}
-      <div className="rounded-sm border border-stroke bg-white px-7.5 py-6 shadow-default dark:border-strokedark dark:bg-boxdark">
+      <div className="rounded-sm border border-stroke bg-white py-6 px-7.5 shadow-default dark:border-strokedark dark:bg-boxdark">
         <div className="flex h-11.5 w-11.5 items-center justify-center rounded-full bg-meta-2 dark:bg-meta-4">
           <svg
-            className="fill-primary dark:fill-white"
+            className="fill-blue-500 dark:fill-white"
             width="22"
             height="16"
             viewBox="0 0 22 16"
@@ -36,20 +36,20 @@ export default async function DashboardPage() {
           </svg>
         </div>
 
-        <div className="mt-4 flex items-end justify-between">
-          <div>
-            <h4 className="text-title-md font-bold text-black dark:text-white">
-              {user.email}
-            </h4>
-            <span className="text-sm font-medium">User Email</span>
-          </div>
+        <div className="mt-4">
+          <h4 className="text-title-md font-bold text-black dark:text-white">
+            User Email
+          </h4>
+          <span className="text-sm font-medium text-body-color">
+            {user.email}
+          </span>
         </div>
       </div>
 
-      <div className="rounded-sm border border-stroke bg-white px-7.5 py-6 shadow-default dark:border-strokedark dark:bg-boxdark">
+      <div className="rounded-sm border border-stroke bg-white py-6 px-7.5 shadow-default dark:border-strokedark dark:bg-boxdark">
         <div className="flex h-11.5 w-11.5 items-center justify-center rounded-full bg-meta-2 dark:bg-meta-4">
           <svg
-            className="fill-primary dark:fill-white"
+            className="fill-blue-500 dark:fill-white"
             width="20"
             height="22"
             viewBox="0 0 20 22"
@@ -71,20 +71,20 @@ export default async function DashboardPage() {
           </svg>
         </div>
 
-        <div className="mt-4 flex items-end justify-between">
-          <div>
-            <h4 className="text-title-md font-bold text-black dark:text-white">
-              {user.id}
-            </h4>
-            <span className="text-sm font-medium">User ID</span>
-          </div>
+        <div className="mt-4">
+          <h4 className="text-title-md font-bold text-black dark:text-white">
+            User ID
+          </h4>
+          <span className="text-sm font-medium text-body-color">
+            {user.id}
+          </span>
         </div>
       </div>
 
-      <div className="rounded-sm border border-stroke bg-white px-7.5 py-6 shadow-default dark:border-strokedark dark:bg-boxdark">
+      <div className="rounded-sm border border-stroke bg-white py-6 px-7.5 shadow-default dark:border-strokedark dark:bg-boxdark">
         <div className="flex h-11.5 w-11.5 items-center justify-center rounded-full bg-meta-2 dark:bg-meta-4">
           <svg
-            className="fill-primary dark:fill-white"
+            className="fill-blue-500 dark:fill-white"
             width="22"
             height="22"
             viewBox="0 0 22 22"
@@ -102,20 +102,20 @@ export default async function DashboardPage() {
           </svg>
         </div>
 
-        <div className="mt-4 flex items-end justify-between">
-          <div>
-            <h4 className="text-title-md font-bold text-black dark:text-white">
-              {new Date(user.created_at).toLocaleDateString()}
-            </h4>
-            <span className="text-sm font-medium">Created At</span>
-          </div>
+        <div className="mt-4">
+          <h4 className="text-title-md font-bold text-black dark:text-white">
+            Created At
+          </h4>
+          <span className="text-sm font-medium text-body-color">
+            {new Date(user.created_at).toLocaleDateString()}
+          </span>
         </div>
       </div>
 
-      <div className="rounded-sm border border-stroke bg-white px-7.5 py-6 shadow-default dark:border-strokedark dark:bg-boxdark">
+      <div className="rounded-sm border border-stroke bg-white py-6 px-7.5 shadow-default dark:border-strokedark dark:bg-boxdark">
         <div className="flex h-11.5 w-11.5 items-center justify-center rounded-full bg-meta-2 dark:bg-meta-4">
           <svg
-            className="fill-primary dark:fill-white"
+            className="fill-blue-500 dark:fill-white"
             width="22"
             height="18"
             viewBox="0 0 22 18"
@@ -137,13 +137,13 @@ export default async function DashboardPage() {
           </svg>
         </div>
 
-        <div className="mt-4 flex items-end justify-between">
-          <div>
-            <h4 className="text-title-md font-bold text-black dark:text-white">
-              {user.role || 'User'}
-            </h4>
-            <span className="text-sm font-medium">Role</span>
-          </div>
+        <div className="mt-4">
+          <h4 className="text-title-md font-bold text-black dark:text-white">
+            Role
+          </h4>
+          <span className="text-sm font-medium text-body-color">
+            {user.role || 'User'}
+          </span>
         </div>
       </div>
     </div>
